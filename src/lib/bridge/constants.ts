@@ -1,0 +1,4 @@
+export const BRIDGE_EVENTS = {
+  BACK_PRESSED: "BACK_PRESSED",
+  COUPON_CLAIMED: "COUPON_CLAIMED",
+} as const;

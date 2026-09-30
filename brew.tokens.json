@@ -1,0 +1,93 @@
+{
+  "name": "Brew",
+  "version": 1,
+  "meta": { "source": "DESIGN.md (style reference only) — mobile WebView event page, 390px, light only" },
+  "color": {
+    "note": "Names mirror the dot path: color.bg.canvas → color-bg-canvas → var(--color-bg-canvas). Light theme only.",
+    "themes": [{ "id": "light", "name": "Light" }],
+    "tokens": [
+      { "name": "color-bg-canvas", "value": "#f2f0eb", "usage": "color.bg.canvas — the page background under every card. Warm cream, never pure white." },
+      { "name": "color-bg-surface", "value": "#ffffff", "usage": "color.bg.surface — CouponCard and Modal fill." },
+      { "name": "color-bg-banner", "value": "#1e3932", "usage": "color.bg.banner — Banner fill, bleeding into the top safe area. Only text-on-dark tokens go on it." },
+      { "name": "color-bg-overlay", "value": "rgba(0, 0, 0, 0.5)", "usage": "color.bg.overlay — dim layer behind the Modal, covering the whole viewport including safe areas." },
+      { "name": "color-action-primary", "value": "#00754a", "usage": "color.action.primary — primary button fill ('쿠폰 받기', '닫기'), outlined button border and label. 5.8:1 against white." },
+      { "name": "color-action-on-primary", "value": "#ffffff", "usage": "color.action.onPrimary — label on a color-action-primary fill." },
+      { "name": "color-action-disabled", "value": "#edebe9", "usage": "color.action.disabled — fill of a disabled button ('받기 완료'). No border." },
+      { "name": "color-action-on-disabled", "value": "rgba(0, 0, 0, 0.58)", "usage": "color.action.onDisabled — label on color-action-disabled. Kept readable (≈5:1) because '받기 완료' is a status, not a dead control." },
+      { "name": "color-text-accent", "value": "#006241", "usage": "color.text.accent — heading emphasis: the discount number and modal title. On surface 7.4:1, on canvas 6.5:1." },
+      { "name": "color-text-primary", "value": "rgba(0, 0, 0, 0.87)", "usage": "color.text.primary — coupon name, body copy, section labels on surface or canvas." },
+      { "name": "color-text-secondary", "value": "rgba(0, 0, 0, 0.58)", "usage": "color.text.secondary — captions, metadata, validity dates on surface or canvas (≥5:1)." },
+      { "name": "color-text-on-dark", "value": "#ffffff", "usage": "color.text.onDark — banner title on color-bg-banner." },
+      { "name": "color-text-on-dark-secondary", "value": "rgba(255, 255, 255, 0.70)", "usage": "color.text.onDarkSecondary — banner supporting line on color-bg-banner (≈7:1)." },
+      { "name": "color-border-divider", "value": "rgba(0, 0, 0, 0.06)", "usage": "color.border.divider — the one hairline between the modal's sections. Decorative; never the only separator of meaning." },
+      { "name": "color-focus-ring", "value": "{color-action-primary}", "usage": "color.focus.ring — 2px keyboard/accessibility-focus outline, offset 2px, on every surface." }
+    ]
+  },
+  "type": {
+    "fonts": [
+      { "family": "Pretendard", "file": "fonts/Pretendard-Regular.woff2", "weight": "400" },
+      { "family": "Pretendard", "file": "fonts/Pretendard-SemiBold.woff2", "weight": "600" },
+      { "family": "Pretendard", "file": "fonts/Pretendard-Bold.woff2", "weight": "700" }
+    ],
+    "families": {
+      "sans": "Pretendard, -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Noto Sans KR\", system-ui, sans-serif"
+    },
+    "groups": [
+      {
+        "name": "Text",
+        "family": "sans",
+        "note": "Five steps, all -0.01em. Hierarchy comes from weight + color first: card title and body share 16px and differ only by 600 vs 400.",
+        "styles": [
+          { "name": "text-banner-title", "fontSize": "24px", "lineHeight": "32px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "가을 맞이 10% 할인 쿠폰", "usage": "Banner title only, in color-text-on-dark. Max two lines." },
+          { "name": "text-discount", "fontSize": "28px", "lineHeight": "32px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "10%", "usage": "The discount number on CouponCard, in color-text-accent. Numbers and % only — never sentences." },
+          { "name": "text-card-title", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 600, "letterSpacing": "-0.01em", "sample": "아메리카노 10% 할인", "usage": "Coupon name, modal title, button labels. color-text-primary (modal title: color-text-accent)." },
+          { "name": "text-body", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "1회 결제 시 1장만 사용할 수 있어요.", "usage": "Modal conditions, any running copy. color-text-primary." },
+          { "name": "text-caption", "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "2026.10.01 – 2026.10.31", "usage": "Card metadata, section labels in the modal, banner supporting line. color-text-secondary (on banner: color-text-on-dark-secondary)." }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "note": "Five steps only: 4, 8, 12, 16, 24. Screen gutter is 16px.",
+    "tokens": [
+      { "name": "space-4", "value": "4px", "usage": "Icon-to-label gap; between discount number and coupon name." },
+      { "name": "space-8", "value": "8px", "usage": "Between the two buttons on a card; between banner title and its supporting line." },
+      { "name": "space-12", "value": "12px", "usage": "Between stacked CouponCards; between a modal section label and its content." },
+      { "name": "space-16", "value": "16px", "usage": "CouponCard padding; gap between card text block and button row." },
+      { "name": "space-24", "value": "24px", "usage": "Modal padding; banner vertical padding; space between banner and the first card; page bottom padding before the safe area." },
+      { "name": "space-gutter", "value": "16px", "usage": "Screen left/right margin for every block. Banner content uses it too, while its fill runs edge to edge." }
+    ]
+  },
+  "radius": {
+    "tokens": [
+      { "name": "radius-surface", "value": "12px", "usage": "CouponCard and Modal corners." },
+      { "name": "radius-pill", "value": "9999px", "usage": "Every button. No square buttons." }
+    ]
+  },
+  "shadow": {
+    "note": "Two levels, each a stack of low-alpha layers — never one heavy drop.",
+    "tokens": [
+      { "name": "shadow-card", "value": "0 0 0.5px rgba(0, 0, 0, 0.14), 0 1px 1px rgba(0, 0, 0, 0.24)", "usage": "CouponCard at rest on the canvas: a whisper of lift." },
+      { "name": "shadow-modal", "value": "0 0 6px rgba(0, 0, 0, 0.24), 0 8px 12px rgba(0, 0, 0, 0.14)", "usage": "Modal dialog floating over the dim overlay." }
+    ]
+  },
+  "safeArea": {
+    "note": "Full-screen WebView: the page draws under the status bar and home indicator. Needs <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">. If the native side injects insets itself, it overrides these two custom properties on :root.",
+    "tokens": [
+      { "name": "safe-area-top", "value": "env(safe-area-inset-top, 0px)", "usage": "Added to the Banner's top padding (space-24 + safe-area-top). The banner fill runs behind the status bar." },
+      { "name": "safe-area-bottom", "value": "env(safe-area-inset-bottom, 0px)", "usage": "Added to the page's bottom padding (space-24 + safe-area-bottom) and to the Modal's vertical limit." }
+    ]
+  },
+  "size": {
+    "tokens": [
+      { "name": "size-viewport", "value": "390px", "usage": "Reference design width. Layouts stay fluid; nothing is fixed to this width." },
+      { "name": "size-touch-min", "value": "44px", "usage": "Minimum height of every tappable control (buttons, modal close)." }
+    ]
+  },
+  "interaction": {
+    "tokens": [
+      { "name": "press-scale", "value": "0.95", "usage": "transform: scale() on :active for every button — the signature press." },
+      { "name": "press-duration", "value": "200ms", "usage": "Transition time for press scale and color changes (ease)." }
+    ]
+  }
+}

@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/*
+ * Brew design tokens — source: Claude Design "Brew" (project/tokens.json,
+ * copied to brew.tokens.json). Light theme only, mobile WebView at 390px.
+ *
+ * :root holds the tokens under their Brew names, so var(--color-bg-canvas)
+ * etc. work exactly as the design system documents them. @theme below maps
+ * them to Tailwind utilities.
+ */
+:root {
+  /* Color */
+  --color-bg-canvas: #f2f0eb;
+  --color-bg-surface: #ffffff;
+  --color-bg-banner: #1e3932;
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  --color-action-primary: #00754a;
+  --color-action-on-primary: #ffffff;
+  --color-action-disabled: #edebe9;
+  --color-action-on-disabled: rgba(0, 0, 0, 0.58);
+  --color-text-accent: #006241;
+  --color-text-primary: rgba(0, 0, 0, 0.87);
+  --color-text-secondary: rgba(0, 0, 0, 0.58);
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-secondary: rgba(255, 255, 255, 0.7);
+  --color-border-divider: rgba(0, 0, 0, 0.06);
+  --color-focus-ring: var(--color-action-primary);
+
+  /* Spacing — only 4, 8, 12, 16, 24 */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-gutter: 16px;
+
+  /* Safe area — the native side may override these two on :root */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Size */
+  --size-viewport: 390px;
+  --size-touch-min: 44px;
+
+  /* Interaction */
+  --press-scale: 0.95;
+  --press-duration: 200ms;
+}
+
+@theme inline {
+  /* Font — --font-pretendard comes from next/font/local in layout.tsx */
+  --font-sans:
+    var(--font-pretendard), -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+
+  /* Colors: bg-canvas, text-fg, bg-action, text-accent, border-divider, … */
+  --color-canvas: var(--color-bg-canvas);
+  --color-surface: var(--color-bg-surface);
+  --color-banner: var(--color-bg-banner);
+  --color-overlay: var(--color-bg-overlay);
+  --color-action: var(--color-action-primary);
+  --color-on-action: var(--color-action-on-primary);
+  --color-action-muted: var(--color-action-disabled);
+  --color-on-action-muted: var(--color-action-on-disabled);
+  --color-accent: var(--color-text-accent);
+  --color-fg: var(--color-text-primary);
+  --color-fg-secondary: var(--color-text-secondary);
+  --color-on-dark: var(--color-text-on-dark);
+  --color-on-dark-secondary: var(--color-text-on-dark-secondary);
+  --color-divider: var(--color-border-divider);
+  --color-focus: var(--color-focus-ring);
+
+  /* Type: text-banner-title, text-discount, text-card-title, text-body, text-caption */
+  --text-banner-title: 24px;
+  --text-banner-title--line-height: 32px;
+  --text-banner-title--font-weight: 700;
+  --text-banner-title--letter-spacing: -0.01em;
+  --text-discount: 28px;
+  --text-discount--line-height: 32px;
+  --text-discount--font-weight: 700;
+  --text-discount--letter-spacing: -0.01em;
+  --text-card-title: 16px;
+  --text-card-title--line-height: 24px;
+  --text-card-title--font-weight: 600;
+  --text-card-title--letter-spacing: -0.01em;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-body--font-weight: 400;
+  --text-body--letter-spacing: -0.01em;
+  --text-caption: 13px;
+  --text-caption--line-height: 20px;
+  --text-caption--font-weight: 400;
+  --text-caption--letter-spacing: -0.01em;
+
+  /*
+   * Spacing: Tailwind's 4px base already gives Brew's steps —
+   * 1 = space-4, 2 = space-8, 3 = space-12, 4 = space-16, 6 = space-24.
+   * Named extras: px-gutter, pt-safe-top, pb-safe-bottom, min-h-touch.
+   */
+  --spacing-gutter: var(--space-gutter);
+  --spacing-safe-top: var(--safe-area-top);
+  --spacing-safe-bottom: var(--safe-area-bottom);
+  --spacing-touch: var(--size-touch-min);
+  --container-viewport: var(--size-viewport);
+}
+
+/*
+ * Radius and shadow names already match Tailwind's namespaces, so they are
+ * defined here directly. `static` always emits them to :root, keeping
+ * var(--radius-surface) / var(--shadow-card) usable outside utilities.
+ */
+@theme static {
+  /* rounded-surface, rounded-pill */
+  --radius-surface: 12px;
+  --radius-pill: 9999px;
+
+  /* max-w-app: mobile-first app column, centered on wider screens */
+  --container-app: 480px;
+
+  /* shadow-card, shadow-modal */
+  --shadow-card: 0 0 0.5px rgba(0, 0, 0, 0.14), 0 1px 1px rgba(0, 0, 0, 0.24);
+  --shadow-modal: 0 0 6px rgba(0, 0, 0, 0.24), 0 8px 12px rgba(0, 0, 0, 0.14);
+}
+
+/* Brew's signature button press: scale 0.95 over 200ms; disabled doesn't press. */
+@utility pressable {
+  transition:
+    transform var(--press-duration) ease,
+    background-color var(--press-duration) ease,
+    color var(--press-duration) ease;
+  &:active:not(:disabled) {
+    transform: scale(var(--press-scale));
+  }
+}
+
+@layer base {
+  body {
+    /* Outside the app column (wide screens); the column itself is bg-canvas. */
+    background: #ffffff;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
