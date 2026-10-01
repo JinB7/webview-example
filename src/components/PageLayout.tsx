@@ -18,7 +18,7 @@ export function PageLayout({ title, description, children }: PageLayoutProps) {
           </p>
         )}
       </header>
-      <main className="flex flex-col gap-3 px-gutter pt-6 pb-[calc(var(--space-24)+var(--safe-area-bottom))]">
+      <main className="flex flex-1 flex-col gap-3 px-gutter pt-6 pb-[calc(var(--space-24)+var(--safe-area-bottom))]">
         {children}
       </main>
     </div>

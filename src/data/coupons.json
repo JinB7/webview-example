@@ -1,0 +1,26 @@
+[
+  {
+    "id": "autumn-drink",
+    "discount": "10%",
+    "title": "가을 음료 10% 할인",
+    "conditions": ["[사용 조건]"],
+    "period": "[유효기간]"
+  },
+  {
+    "id": "dessert-set",
+    "discount": "15%",
+    "title": "디저트 세트 15% 할인",
+    "conditions": [
+      "10,000원 이상 결제 시 사용할 수 있어요.",
+      "1인 1회만 사용할 수 있어요."
+    ],
+    "period": "2026.10.01 – 2026.10.31"
+  },
+  {
+    "id": "first-order",
+    "discount": "20%",
+    "title": "첫 주문 20% 할인",
+    "conditions": ["[사용 조건]"],
+    "period": "[유효기간]"
+  }
+]

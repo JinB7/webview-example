@@ -1,5 +1,6 @@
 export type NativeToWeb = {
   BACK_PRESSED: undefined;
+  APP_STATE: { state: "foreground" | "background" };
 };
 
 export type WebToNative = {
