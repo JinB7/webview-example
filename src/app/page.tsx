@@ -17,7 +17,9 @@ export default function Home() {
 
   useEffect(() => {
     return onBridgeMessage(BRIDGE_EVENTS.APP_STATE, ({ state }) => {
-      if (state === "foreground") refetch();
+      if (state === "foreground") {
+        refetch();
+      }
     });
   }, [refetch]);
 
