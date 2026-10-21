@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { BackHandling } from "@/src/components/BackHandling";
+import { BottomNav, type BottomNavItem } from "@/src/components/BottomNav";
 import { ModalProvider } from "@/src/providers/ModalProvider";
 import "./globals.css";
 
@@ -36,17 +36,25 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+// Design board "BottomNav 컴포넌트" menu: each tab jumps to a coupon card.
+const NAV_ITEMS: BottomNavItem[] = [
+  { key: "1", label: "쿠폰1", icon: "cup", href: "#coupon-1" },
+  { key: "2", label: "쿠폰2", icon: "cake", href: "#coupon-2" },
+  { key: "3", label: "쿠폰3", icon: "bag", href: "#coupon-3" },
+];
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className={`${pretendard.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {/* <BackHandling> */}
         <ModalProvider>
           <div className="relative mx-auto flex min-h-dvh w-full max-w-app flex-col bg-canvas">
             {children}
+            <div className="sticky bottom-0">
+              <BottomNav items={NAV_ITEMS} active="1" />
+            </div>
           </div>
         </ModalProvider>
-        {/* </BackHandling> */}
       </body>
     </html>
   );
