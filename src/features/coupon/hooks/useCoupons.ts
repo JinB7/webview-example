@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import type { Coupon } from "@/src/types/coupon";
+import type { Coupon } from "@/src/features/coupon/types/coupon";
 
 const fetchCoupons = async (): Promise<Coupon[]> => {
   const res = await fetch("/api/coupons");

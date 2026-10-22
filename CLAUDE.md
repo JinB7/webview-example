@@ -72,3 +72,22 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 <!-- ## Brew 컴포넌트 구현
 
 - Brew 디자인 캔버스(claude.ai 링크)의 컴포넌트 구현 요청은 메인 세션에서 직접 구현하지 말고 `component-builder` 에이전트에 위임한다. 캔버스 링크와 아트보드 이름을 그대로 넘긴다. -->
+
+## 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── layout.tsx              # 앱 전체에 걸친 요소 (Provider, BottomNav)
+│   ├── page.tsx                # 섹션 배치만
+│   ├── _components/            # 이 page 전용 섹션 (CouponListSection). 라우트마다 page.tsx 옆에 둔다
+│   └── api/                    # Route Handler
+├── features/coupon/            # 도메인 코드는 도메인 폴더에 모은다
+│   ├── components/             # 조합 재료 (CouponCard, CouponDetailModal)
+│   ├── hooks/                  # 데이터 조회 (useCoupons)
+│   └── types/                  # 도메인 타입 (coupon.ts)
+├── components/                 # 도메인 무관 공용 UI (Button, Spinner, PageLayout, BottomNav)
+├── hooks/                      # 앱 공용 훅 (useModal)
+├── providers/                  # 앱 공용 Provider (ModalProvider)
+└── lib/bridge/                 # 웹뷰 ↔ 네이티브 메시지 (sendToNative, onBridgeMessage)
+```

@@ -38,7 +38,7 @@ export const viewport: Viewport = {
 
 // Design board "BottomNav 컴포넌트" menu: each tab jumps to a coupon card.
 const NAV_ITEMS: BottomNavItem[] = [
-  { key: "1", label: "쿠폰1", icon: "cup", href: "#coupon-1" },
+  { key: "1", label: "쿠폰1", icon: "cup", href: "/" },
   { key: "2", label: "쿠폰2", icon: "cake", href: "#coupon-2" },
   { key: "3", label: "쿠폰3", icon: "bag", href: "#coupon-3" },
 ];
