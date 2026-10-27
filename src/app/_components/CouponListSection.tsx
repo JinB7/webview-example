@@ -11,7 +11,7 @@ import { Spinner } from "@/src/components/Spinner";
 
 export function CouponListSection() {
   const { open } = useModal();
-  const { coupons, isLoading, refetch } = useCoupons();
+  const { data: coupons = [], isLoading, refetch } = useCoupons();
   const [claimedIds, setClaimedIds] = useState<string[]>([]);
 
   useEffect(() => {

@@ -1,35 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import type { Coupon } from "@/src/features/coupon/types/coupon";
-
-const fetchCoupons = async (): Promise<Coupon[]> => {
-  const res = await fetch("/api/coupons");
-  if (!res.ok) throw new Error(`쿠폰 조회 실패: ${res.status}`);
-  return res.json();
-};
+import { useQuery } from "@tanstack/react-query";
+import { getCoupons } from "@/src/features/coupon/api/coupon.api";
+import { couponKeys } from "@/src/features/coupon/api/coupon.keys";
 
 export const useCoupons = () => {
-  const [coupons, setCoupons] = useState<Coupon[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const load = useCallback(
-    () =>
-      fetchCoupons()
-        .then(setCoupons)
-        .catch(console.error)
-        .finally(() => setIsLoading(false)),
-    [],
-  );
-
-  const refetch = useCallback(() => {
-    setIsLoading(true);
-    return load();
-  }, [load]);
-
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  return { coupons, isLoading, refetch };
+  return useQuery({
+    queryKey: couponKeys.list(),
+    queryFn: getCoupons,
+  });
 };
