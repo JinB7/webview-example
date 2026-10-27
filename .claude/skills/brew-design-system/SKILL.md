@@ -63,17 +63,20 @@ description: Brew(Claude Design) 디자인을 Tailwind로 구현·수정·리뷰
 
 ## 모양·그림자·크기·인터랙션
 
-| 클래스                           | 용도                                                        |
-| -------------------------------- | ----------------------------------------------------------- |
-| `rounded-surface`                | CouponCard, Modal, TextField, TextArea                      |
-| `rounded-pill`                   | **모든** 버튼. 각진 버튼 없음                               |
-| `shadow-card`                    | 캔버스 위 CouponCard                                        |
-| `shadow-modal`                   | 오버레이 위 Modal                                           |
-| `min-h-touch`                    | 탭 가능한 모든 요소 (버튼, Modal 닫기) — 44px 이상          |
-| `min-h-field`                    | TextField 높이 48px. TextArea는 행당 24px + 위아래 space-12 |
-| `pressable`                      | **모든** 버튼. scale 0.95 / 200ms, disabled는 눌리지 않음   |
-| `max-w-app mx-auto`              | 앱 컬럼 (480px, 넓은 화면에서 가운데 정렬)                  |
-| `pt-safe-top` / `pb-safe-bottom` | safe area 단독으로 쓸 때                                    |
+| 클래스                           | 용도                                                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `rounded-surface`                | CouponCard, Modal, TextField, TextArea                                                                  |
+| `rounded-pill`                   | **모든** 버튼. 각진 버튼 없음                                                                           |
+| `shadow-card`                    | 캔버스 위 CouponCard                                                                                    |
+| `shadow-modal`                   | 오버레이 위 Modal                                                                                       |
+| `min-h-touch`                    | 탭 가능한 모든 요소 (버튼, Modal 닫기) — 44px 이상                                                      |
+| `min-h-field-sm`                 | TextField sm 44px — 나란히 놓는 필드, 인라인 필터, Modal 안 필드. 좌우 패딩 `px-3`                      |
+| `min-h-field-md`                 | TextField md 48px (기본) — 쿠폰 등록 같은 일반 폼. 좌우 패딩 `px-4`                                     |
+| `min-h-field-lg`                 | TextField lg 56px — 화면의 메인 입력 하나 (쿠폰 코드 입력). 좌우 패딩 `px-4`, 글자는 `text-body` 그대로 |
+| (TextArea)                       | 좌우 패딩은 md와 같은 `px-4`, 위아래 `py-3`. 높이는 행당 24px씩 늘어난다                                |
+| `pressable`                      | **모든** 버튼. scale 0.95 / 200ms, disabled는 눌리지 않음                                               |
+| `max-w-app mx-auto`              | 앱 컬럼 (480px, 넓은 화면에서 가운데 정렬)                                                              |
+| `pt-safe-top` / `pb-safe-bottom` | safe area 단독으로 쓸 때                                                                                |
 
 `max-w-viewport`(390px)는 기준 폭 참고값이다. 레이아웃을 이 폭에 고정하지 않는다.
 

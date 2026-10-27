@@ -1,6 +1,6 @@
 {
   "name": "Brew",
-  "version": 2,
+  "version": 3,
   "meta": { "source": "DESIGN.md (style reference only) — mobile WebView event page, 390px, light only" },
   "color": {
     "note": "Names mirror the dot path: color.bg.canvas → color-bg-canvas → var(--color-bg-canvas). Light theme only.",
@@ -55,8 +55,8 @@
     "tokens": [
       { "name": "space-4", "value": "4px", "usage": "Icon-to-label gap; between discount number and coupon name; between a field and its helper or error line." },
       { "name": "space-8", "value": "8px", "usage": "Between the two buttons on a card; between banner title and its supporting line; between a field label and the field." },
-      { "name": "space-12", "value": "12px", "usage": "Between stacked CouponCards; between a modal section label and its content; TextArea vertical padding." },
-      { "name": "space-16", "value": "16px", "usage": "CouponCard padding; gap between card text block and button row; field horizontal padding." },
+      { "name": "space-12", "value": "12px", "usage": "Between stacked CouponCards; between a modal section label and its content; TextArea vertical padding; horizontal padding of an sm TextField." },
+      { "name": "space-16", "value": "16px", "usage": "CouponCard padding; gap between card text block and button row; horizontal padding of md and lg fields." },
       { "name": "space-24", "value": "24px", "usage": "Modal padding; banner vertical padding; space between banner and the first card; between form fields and before the submit button; page bottom padding before the safe area." },
       { "name": "space-gutter", "value": "16px", "usage": "Screen left/right margin for every block. Banner content uses it too, while its fill runs edge to edge." }
     ]
@@ -85,7 +85,9 @@
     "tokens": [
       { "name": "size-viewport", "value": "390px", "usage": "Reference design width. Layouts stay fluid; nothing is fixed to this width." },
       { "name": "size-touch-min", "value": "44px", "usage": "Minimum height of every tappable control (buttons, modal close)." },
-      { "name": "size-field", "value": "48px", "usage": "Height of a TextField. A TextArea grows by 24px per row inside space-12 padding." }
+      { "name": "size-field-sm", "value": "44px", "usage": "TextField size sm — compact fields: a pair side by side, an inline filter, a field inside the Modal. Equal to size-touch-min; no field is ever shorter. Horizontal padding space-12." },
+      { "name": "size-field-md", "value": "48px", "usage": "TextField size md (default) — every field of a regular form such as 쿠폰 등록. Horizontal padding space-16. A TextArea uses md padding and grows by 24px per row." },
+      { "name": "size-field-lg", "value": "56px", "usage": "TextField size lg — the one main input of a screen, e.g. 쿠폰 코드 입력. Horizontal padding space-16; text stays text-body 16px." }
     ]
   },
   "interaction": {

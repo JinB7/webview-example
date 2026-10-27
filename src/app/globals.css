@@ -44,7 +44,9 @@
   /* Size */
   --size-viewport: 390px;
   --size-touch-min: 44px;
-  --size-field: 48px;
+  --size-field-sm: 44px;
+  --size-field-md: 48px;
+  --size-field-lg: 56px;
 
   /* Interaction */
   --press-scale: 0.95;
@@ -102,13 +104,16 @@
   /*
    * Spacing: Tailwind's 4px base already gives Brew's steps —
    * 1 = space-4, 2 = space-8, 3 = space-12, 4 = space-16, 6 = space-24.
-   * Named extras: px-gutter, pt-safe-top, pb-safe-bottom, min-h-touch, min-h-field.
+   * Named extras: px-gutter, pt-safe-top, pb-safe-bottom, min-h-touch,
+   * min-h-field-sm / -md / -lg.
    */
   --spacing-gutter: var(--space-gutter);
   --spacing-safe-top: var(--safe-area-top);
   --spacing-safe-bottom: var(--safe-area-bottom);
   --spacing-touch: var(--size-touch-min);
-  --spacing-field: var(--size-field);
+  --spacing-field-sm: var(--size-field-sm);
+  --spacing-field-md: var(--size-field-md);
+  --spacing-field-lg: var(--size-field-lg);
   --container-viewport: var(--size-viewport);
 }
 
