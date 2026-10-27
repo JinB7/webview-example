@@ -21,9 +21,12 @@
   --color-text-accent: #006241;
   --color-text-primary: rgba(0, 0, 0, 0.87);
   --color-text-secondary: rgba(0, 0, 0, 0.58);
+  --color-text-error: #c82014;
   --color-text-on-dark: #ffffff;
   --color-text-on-dark-secondary: rgba(255, 255, 255, 0.7);
   --color-border-divider: rgba(0, 0, 0, 0.06);
+  --color-border-field: rgba(0, 0, 0, 0.46);
+  --color-border-error: var(--color-text-error);
   --color-focus-ring: var(--color-action-primary);
 
   /* Spacing — only 4, 8, 12, 16, 24 */
@@ -41,6 +44,7 @@
   /* Size */
   --size-viewport: 390px;
   --size-touch-min: 44px;
+  --size-field: 48px;
 
   /* Interaction */
   --press-scale: 0.95;
@@ -65,9 +69,12 @@
   --color-accent: var(--color-text-accent);
   --color-fg: var(--color-text-primary);
   --color-fg-secondary: var(--color-text-secondary);
+  --color-error: var(--color-text-error);
   --color-on-dark: var(--color-text-on-dark);
   --color-on-dark-secondary: var(--color-text-on-dark-secondary);
   --color-divider: var(--color-border-divider);
+  --color-field: var(--color-border-field);
+  --color-field-error: var(--color-border-error);
   --color-focus: var(--color-focus-ring);
 
   /* Type: text-banner-title, text-discount, text-card-title, text-body, text-caption */
@@ -95,12 +102,13 @@
   /*
    * Spacing: Tailwind's 4px base already gives Brew's steps —
    * 1 = space-4, 2 = space-8, 3 = space-12, 4 = space-16, 6 = space-24.
-   * Named extras: px-gutter, pt-safe-top, pb-safe-bottom, min-h-touch.
+   * Named extras: px-gutter, pt-safe-top, pb-safe-bottom, min-h-touch, min-h-field.
    */
   --spacing-gutter: var(--space-gutter);
   --spacing-safe-top: var(--safe-area-top);
   --spacing-safe-bottom: var(--safe-area-bottom);
   --spacing-touch: var(--size-touch-min);
+  --spacing-field: var(--size-field);
   --container-viewport: var(--size-viewport);
 }
 

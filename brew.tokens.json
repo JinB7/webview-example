@@ -1,13 +1,13 @@
 {
   "name": "Brew",
-  "version": 1,
+  "version": 2,
   "meta": { "source": "DESIGN.md (style reference only) — mobile WebView event page, 390px, light only" },
   "color": {
     "note": "Names mirror the dot path: color.bg.canvas → color-bg-canvas → var(--color-bg-canvas). Light theme only.",
     "themes": [{ "id": "light", "name": "Light" }],
     "tokens": [
       { "name": "color-bg-canvas", "value": "#f2f0eb", "usage": "color.bg.canvas — the page background under every card. Warm cream, never pure white." },
-      { "name": "color-bg-surface", "value": "#ffffff", "usage": "color.bg.surface — CouponCard and Modal fill." },
+      { "name": "color-bg-surface", "value": "#ffffff", "usage": "color.bg.surface — CouponCard, Modal and form field fill." },
       { "name": "color-bg-banner", "value": "#1e3932", "usage": "color.bg.banner — Banner fill, bleeding into the top safe area. Only text-on-dark tokens go on it." },
       { "name": "color-bg-overlay", "value": "rgba(0, 0, 0, 0.5)", "usage": "color.bg.overlay — dim layer behind the Modal, covering the whole viewport including safe areas." },
       { "name": "color-action-primary", "value": "#00754a", "usage": "color.action.primary — primary button fill ('쿠폰 받기', '닫기'), outlined button border and label. 5.8:1 against white." },
@@ -15,12 +15,15 @@
       { "name": "color-action-disabled", "value": "#edebe9", "usage": "color.action.disabled — fill of a disabled button ('받기 완료'). No border." },
       { "name": "color-action-on-disabled", "value": "rgba(0, 0, 0, 0.58)", "usage": "color.action.onDisabled — label on color-action-disabled. Kept readable (≈5:1) because '받기 완료' is a status, not a dead control." },
       { "name": "color-text-accent", "value": "#006241", "usage": "color.text.accent — heading emphasis: the discount number and modal title. On surface 7.4:1, on canvas 6.5:1." },
-      { "name": "color-text-primary", "value": "rgba(0, 0, 0, 0.87)", "usage": "color.text.primary — coupon name, body copy, section labels on surface or canvas." },
-      { "name": "color-text-secondary", "value": "rgba(0, 0, 0, 0.58)", "usage": "color.text.secondary — captions, metadata, validity dates on surface or canvas (≥5:1)." },
+      { "name": "color-text-primary", "value": "rgba(0, 0, 0, 0.87)", "usage": "color.text.primary — coupon name, body copy, section labels, field labels and typed text on surface or canvas." },
+      { "name": "color-text-secondary", "value": "rgba(0, 0, 0, 0.58)", "usage": "color.text.secondary — captions, metadata, validity dates, field helper text, counters and placeholders on surface or canvas (≥5:1)." },
+      { "name": "color-text-error", "value": "#c82014", "usage": "color.text.error — a field's error message and its alert icon. 5.7:1 on surface, 5.0:1 on canvas. Same lightness as the action green, so an error is always text plus icon, never color alone." },
       { "name": "color-text-on-dark", "value": "#ffffff", "usage": "color.text.onDark — banner title on color-bg-banner." },
       { "name": "color-text-on-dark-secondary", "value": "rgba(255, 255, 255, 0.70)", "usage": "color.text.onDarkSecondary — banner supporting line on color-bg-banner (≈7:1)." },
       { "name": "color-border-divider", "value": "rgba(0, 0, 0, 0.06)", "usage": "color.border.divider — the one hairline between the modal's sections. Decorative; never the only separator of meaning." },
-      { "name": "color-focus-ring", "value": "{color-action-primary}", "usage": "color.focus.ring — 2px keyboard/accessibility-focus outline, offset 2px, on every surface." }
+      { "name": "color-border-field", "value": "rgba(0, 0, 0, 0.46)", "usage": "color.border.field — 1px border of a TextField or TextArea at rest. ≈3.5:1 against the white fill, ≈3:1 against the canvas around it (the non-text minimum)." },
+      { "name": "color-border-error", "value": "{color-text-error}", "usage": "color.border.error — the 2px border (1px border + 1px ring) of a field in error. Always paired with an error message." },
+      { "name": "color-focus-ring", "value": "{color-action-primary}", "usage": "color.focus.ring — 2px keyboard/accessibility-focus outline, offset 2px, on every surface; also the 2px border of a focused field." }
     ]
   },
   "type": {
@@ -41,8 +44,8 @@
           { "name": "text-banner-title", "fontSize": "24px", "lineHeight": "32px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "가을 맞이 10% 할인 쿠폰", "usage": "Banner title only, in color-text-on-dark. Max two lines." },
           { "name": "text-discount", "fontSize": "28px", "lineHeight": "32px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "10%", "usage": "The discount number on CouponCard, in color-text-accent. Numbers and % only — never sentences." },
           { "name": "text-card-title", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 600, "letterSpacing": "-0.01em", "sample": "아메리카노 10% 할인", "usage": "Coupon name, modal title, button labels. color-text-primary (modal title: color-text-accent)." },
-          { "name": "text-body", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "1회 결제 시 1장만 사용할 수 있어요.", "usage": "Modal conditions, any running copy. color-text-primary." },
-          { "name": "text-caption", "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "2026.10.01 – 2026.10.31", "usage": "Card metadata, section labels in the modal, banner supporting line. color-text-secondary (on banner: color-text-on-dark-secondary)." }
+          { "name": "text-body", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "1회 결제 시 1장만 사용할 수 있어요.", "usage": "Modal conditions, any running copy, and the text typed into a TextField or TextArea. color-text-primary." },
+          { "name": "text-caption", "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400, "letterSpacing": "-0.01em", "sample": "2026.10.01 – 2026.10.31", "usage": "Card metadata, section labels in the modal, banner supporting line, field labels, counters, helper and error messages. color-text-secondary (field labels: color-text-primary; errors: color-text-error; on banner: color-text-on-dark-secondary)." }
         ]
       }
     ]
@@ -50,17 +53,17 @@
   "spacing": {
     "note": "Five steps only: 4, 8, 12, 16, 24. Screen gutter is 16px.",
     "tokens": [
-      { "name": "space-4", "value": "4px", "usage": "Icon-to-label gap; between discount number and coupon name." },
-      { "name": "space-8", "value": "8px", "usage": "Between the two buttons on a card; between banner title and its supporting line." },
-      { "name": "space-12", "value": "12px", "usage": "Between stacked CouponCards; between a modal section label and its content." },
-      { "name": "space-16", "value": "16px", "usage": "CouponCard padding; gap between card text block and button row." },
-      { "name": "space-24", "value": "24px", "usage": "Modal padding; banner vertical padding; space between banner and the first card; page bottom padding before the safe area." },
+      { "name": "space-4", "value": "4px", "usage": "Icon-to-label gap; between discount number and coupon name; between a field and its helper or error line." },
+      { "name": "space-8", "value": "8px", "usage": "Between the two buttons on a card; between banner title and its supporting line; between a field label and the field." },
+      { "name": "space-12", "value": "12px", "usage": "Between stacked CouponCards; between a modal section label and its content; TextArea vertical padding." },
+      { "name": "space-16", "value": "16px", "usage": "CouponCard padding; gap between card text block and button row; field horizontal padding." },
+      { "name": "space-24", "value": "24px", "usage": "Modal padding; banner vertical padding; space between banner and the first card; between form fields and before the submit button; page bottom padding before the safe area." },
       { "name": "space-gutter", "value": "16px", "usage": "Screen left/right margin for every block. Banner content uses it too, while its fill runs edge to edge." }
     ]
   },
   "radius": {
     "tokens": [
-      { "name": "radius-surface", "value": "12px", "usage": "CouponCard and Modal corners." },
+      { "name": "radius-surface", "value": "12px", "usage": "CouponCard, Modal, TextField and TextArea corners." },
       { "name": "radius-pill", "value": "9999px", "usage": "Every button. No square buttons." }
     ]
   },
@@ -81,13 +84,14 @@
   "size": {
     "tokens": [
       { "name": "size-viewport", "value": "390px", "usage": "Reference design width. Layouts stay fluid; nothing is fixed to this width." },
-      { "name": "size-touch-min", "value": "44px", "usage": "Minimum height of every tappable control (buttons, modal close)." }
+      { "name": "size-touch-min", "value": "44px", "usage": "Minimum height of every tappable control (buttons, modal close)." },
+      { "name": "size-field", "value": "48px", "usage": "Height of a TextField. A TextArea grows by 24px per row inside space-12 padding." }
     ]
   },
   "interaction": {
     "tokens": [
       { "name": "press-scale", "value": "0.95", "usage": "transform: scale() on :active for every button — the signature press." },
-      { "name": "press-duration", "value": "200ms", "usage": "Transition time for press scale and color changes (ease)." }
+      { "name": "press-duration", "value": "200ms", "usage": "Transition time for press scale and color changes (ease), and for a field's border change on focus." }
     ]
   }
 }

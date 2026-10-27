@@ -28,48 +28,52 @@ description: Brew(Claude Design) 디자인을 Tailwind로 구현·수정·리뷰
 
 ## 색상
 
-| 토큰                         | 클래스                                        | 용도                                                              |
-| ---------------------------- | --------------------------------------------- | ----------------------------------------------------------------- |
-| color-bg-canvas              | `bg-canvas`                                   | 페이지(앱 컬럼) 배경. 페이지 배경을 흰색으로 두지 않는다          |
-| color-bg-surface             | `bg-surface`                                  | CouponCard, Modal 면                                              |
-| color-bg-banner              | `bg-banner`                                   | Banner 면. 그 위에는 on-dark 텍스트만                             |
-| color-bg-overlay             | `bg-overlay`                                  | Modal 뒤 딤. safe area 포함 화면 전체                             |
-| color-action-primary         | `bg-action` / `border-action` / `text-action` | primary 버튼 면, outlined 버튼 테두리·라벨                        |
-| color-action-on-primary      | `text-on-action`                              | primary 버튼 라벨                                                 |
-| color-action-disabled        | `bg-action-muted`                             | disabled 버튼 면 (테두리 없음)                                    |
-| color-action-on-disabled     | `text-on-action-muted`                        | disabled 버튼 라벨                                                |
-| color-text-accent            | `text-accent`                                 | **할인 숫자와 Modal 제목에만**                                    |
-| color-text-primary           | `text-fg`                                     | 쿠폰명, 본문, 섹션 라벨                                           |
-| color-text-secondary         | `text-fg-secondary`                           | 캡션, 메타, 유효기간                                              |
-| color-text-on-dark           | `text-on-dark`                                | Banner 제목                                                       |
-| color-text-on-dark-secondary | `text-on-dark-secondary`                      | Banner 보조 문구                                                  |
-| color-border-divider         | `border-divider`                              | Modal 섹션 사이 헤어라인 1개. 의미 구분을 이 선에만 맡기지 않는다 |
-| color-focus-ring             | (클래스 쓰지 않음)                            | `globals.css`의 `:focus-visible`이 전역 처리                      |
+| 토큰                         | 클래스                                        | 용도                                                                    |
+| ---------------------------- | --------------------------------------------- | ----------------------------------------------------------------------- |
+| color-bg-canvas              | `bg-canvas`                                   | 페이지(앱 컬럼) 배경. 페이지 배경을 흰색으로 두지 않는다                |
+| color-bg-surface             | `bg-surface`                                  | CouponCard, Modal, 폼 필드(TextField·TextArea) 면                       |
+| color-bg-banner              | `bg-banner`                                   | Banner 면. 그 위에는 on-dark 텍스트만                                   |
+| color-bg-overlay             | `bg-overlay`                                  | Modal 뒤 딤. safe area 포함 화면 전체                                   |
+| color-action-primary         | `bg-action` / `border-action` / `text-action` | primary 버튼 면, outlined 버튼 테두리·라벨                              |
+| color-action-on-primary      | `text-on-action`                              | primary 버튼 라벨                                                       |
+| color-action-disabled        | `bg-action-muted`                             | disabled 버튼 면 (테두리 없음)                                          |
+| color-action-on-disabled     | `text-on-action-muted`                        | disabled 버튼 라벨                                                      |
+| color-text-accent            | `text-accent`                                 | **할인 숫자와 Modal 제목에만**                                          |
+| color-text-primary           | `text-fg`                                     | 쿠폰명, 본문, 섹션 라벨, 필드 라벨, 입력한 텍스트                       |
+| color-text-secondary         | `text-fg-secondary`                           | 캡션, 메타, 유효기간, 필드 helper·카운터·placeholder                    |
+| color-text-error             | `text-error`                                  | 필드 에러 메시지와 경고 아이콘. 색만으로 알리지 않고 항상 텍스트+아이콘 |
+| color-text-on-dark           | `text-on-dark`                                | Banner 제목                                                             |
+| color-text-on-dark-secondary | `text-on-dark-secondary`                      | Banner 보조 문구                                                        |
+| color-border-divider         | `border-divider`                              | Modal 섹션 사이 헤어라인 1개. 의미 구분을 이 선에만 맡기지 않는다       |
+| color-border-field           | `border-field`                                | 기본 상태 TextField·TextArea의 1px 테두리                               |
+| color-border-error           | `border-field-error`                          | 에러 상태 필드의 2px 테두리. 항상 에러 메시지와 함께 쓴다               |
+| color-focus-ring             | (클래스 쓰지 않음)                            | `globals.css`의 `:focus-visible`이 전역 처리                            |
 
 ## 타이포그래피
 
 5개 스타일만 쓴다. 각 클래스에 크기·행간·굵기·자간이 모두 들어 있으므로 `font-*`(굵기), `leading-*`, `tracking-*`를 덧붙이지 않는다.
 
-| 클래스              | 스펙      | 용도                                         | 색                                                             |
-| ------------------- | --------- | -------------------------------------------- | -------------------------------------------------------------- |
-| `text-banner-title` | 24/32 700 | Banner 제목 전용, 최대 2줄                   | `text-on-dark`                                                 |
-| `text-discount`     | 28/32 700 | CouponCard 할인 숫자. 숫자와 %만, 문장 금지  | `text-accent`                                                  |
-| `text-card-title`   | 16/24 600 | 쿠폰명, Modal 제목, 버튼 라벨                | `text-fg` (Modal 제목은 `text-accent`)                         |
-| `text-body`         | 16/24 400 | Modal 조건, 본문                             | `text-fg`                                                      |
-| `text-caption`      | 13/20 400 | 카드 메타, Modal 섹션 라벨, Banner 보조 문구 | `text-fg-secondary` (Banner 위에서는 `text-on-dark-secondary`) |
+| 클래스              | 스펙      | 용도                                                                       | 색                                                                                                         |
+| ------------------- | --------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `text-banner-title` | 24/32 700 | Banner 제목 전용, 최대 2줄                                                 | `text-on-dark`                                                                                             |
+| `text-discount`     | 28/32 700 | CouponCard 할인 숫자. 숫자와 %만, 문장 금지                                | `text-accent`                                                                                              |
+| `text-card-title`   | 16/24 600 | 쿠폰명, Modal 제목, 버튼 라벨                                              | `text-fg` (Modal 제목은 `text-accent`)                                                                     |
+| `text-body`         | 16/24 400 | Modal 조건, 본문, 필드에 입력한 텍스트                                     | `text-fg`                                                                                                  |
+| `text-caption`      | 13/20 400 | 카드 메타, Modal 섹션 라벨, Banner 보조 문구, 필드 라벨·카운터·helper·에러 | `text-fg-secondary` (필드 라벨은 `text-fg`, 에러는 `text-error`, Banner 위에서는 `text-on-dark-secondary`) |
 
 ## 모양·그림자·크기·인터랙션
 
-| 클래스                           | 용도                                                      |
-| -------------------------------- | --------------------------------------------------------- |
-| `rounded-surface`                | CouponCard, Modal                                         |
-| `rounded-pill`                   | **모든** 버튼. 각진 버튼 없음                             |
-| `shadow-card`                    | 캔버스 위 CouponCard                                      |
-| `shadow-modal`                   | 오버레이 위 Modal                                         |
-| `min-h-touch`                    | 탭 가능한 모든 요소 (버튼, Modal 닫기) — 44px 이상        |
-| `pressable`                      | **모든** 버튼. scale 0.95 / 200ms, disabled는 눌리지 않음 |
-| `max-w-app mx-auto`              | 앱 컬럼 (480px, 넓은 화면에서 가운데 정렬)                |
-| `pt-safe-top` / `pb-safe-bottom` | safe area 단독으로 쓸 때                                  |
+| 클래스                           | 용도                                                        |
+| -------------------------------- | ----------------------------------------------------------- |
+| `rounded-surface`                | CouponCard, Modal, TextField, TextArea                      |
+| `rounded-pill`                   | **모든** 버튼. 각진 버튼 없음                               |
+| `shadow-card`                    | 캔버스 위 CouponCard                                        |
+| `shadow-modal`                   | 오버레이 위 Modal                                           |
+| `min-h-touch`                    | 탭 가능한 모든 요소 (버튼, Modal 닫기) — 44px 이상          |
+| `min-h-field`                    | TextField 높이 48px. TextArea는 행당 24px + 위아래 space-12 |
+| `pressable`                      | **모든** 버튼. scale 0.95 / 200ms, disabled는 눌리지 않음   |
+| `max-w-app mx-auto`              | 앱 컬럼 (480px, 넓은 화면에서 가운데 정렬)                  |
+| `pt-safe-top` / `pb-safe-bottom` | safe area 단독으로 쓸 때                                    |
 
 `max-w-viewport`(390px)는 기준 폭 참고값이다. 레이아웃을 이 폭에 고정하지 않는다.
 
