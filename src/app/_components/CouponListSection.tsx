@@ -8,6 +8,7 @@ import { useModal } from "@/src/hooks/useModal";
 import { BRIDGE_EVENTS } from "@/src/lib/bridge/constants";
 import { onBridgeMessage, sendToNative } from "@/src/lib/bridge/message";
 import { Spinner } from "@/src/components/Spinner";
+import { Textarea } from "@/src/components/ui/textarea";
 
 export function CouponListSection() {
   const { open } = useModal();
