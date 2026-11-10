@@ -20,7 +20,7 @@ export const Button = ({
   return (
     <button
       type={type}
-      className={`pressable inline-flex cursor-pointer h-touch items-center justify-center gap-1 rounded-pill px-4 text-card-title ${variantClasses[variant]} disabled:cursor-default disabled:border-transparent disabled:bg-action-muted disabled:text-on-action-muted ${className}`}
+      className={`inline-flex h-touch pressable cursor-pointer items-center justify-center gap-1 rounded-pill px-4 text-card-title ${variantClasses[variant]} disabled:cursor-default disabled:border-transparent disabled:bg-action-muted disabled:text-on-action-muted ${className}`}
       {...props}
     />
   );

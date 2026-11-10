@@ -40,14 +40,14 @@ export function CouponDetailModal({
         className="flex max-h-full w-full max-w-[calc(var(--container-app)-2*var(--space-gutter))] flex-col gap-6 overflow-y-auto rounded-surface bg-surface p-6 shadow-modal outline-none"
       >
         <div className="flex flex-col gap-4">
-          <h2 id={titleId} className="text-card-title text-accent break-keep">
+          <h2 id={titleId} className="text-card-title break-keep text-accent">
             {title}
           </h2>
           <div className="flex flex-col gap-3">
             <h3 className="text-caption text-fg-secondary">사용 조건</h3>
             <div className="flex flex-col gap-1">
               {conditions.map((condition) => (
-                <p key={condition} className="text-body text-fg break-keep">
+                <p key={condition} className="text-body break-keep text-fg">
                   {condition}
                 </p>
               ))}

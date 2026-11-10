@@ -25,7 +25,7 @@ export function CouponCard({
         >
           {discount}
         </div>
-        <h2 className="text-card-title text-fg break-keep">{title}</h2>
+        <h2 className="text-card-title break-keep text-fg">{title}</h2>
       </div>
       <div className="flex gap-2">
         <Button className="flex-1" disabled={claimed} onClick={onClaim}>

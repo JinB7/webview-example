@@ -11,9 +11,9 @@ export function PageLayout({ title, description, children }: PageLayoutProps) {
   return (
     <div className="flex flex-1 flex-col">
       <header className="flex flex-col gap-2 bg-banner px-gutter pt-[calc(var(--space-24)+var(--safe-area-top))] pb-6">
-        <h1 className="text-banner-title text-on-dark break-keep">{title}</h1>
+        <h1 className="text-banner-title break-keep text-on-dark">{title}</h1>
         {description && (
-          <p className="text-caption text-on-dark-secondary break-keep">
+          <p className="text-caption break-keep text-on-dark-secondary">
             {description}
           </p>
         )}

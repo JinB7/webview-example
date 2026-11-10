@@ -35,7 +35,7 @@ export function BottomNav({ items, active }: BottomNavProps) {
             key={item.key}
             href={item.href}
             aria-current={isActive ? "true" : undefined}
-            className={`pressable flex min-h-touch flex-1 flex-col items-center gap-1 py-2 ${isActive ? "text-action" : "text-fg-secondary"}`}
+            className={`flex min-h-touch flex-1 pressable flex-col items-center gap-1 py-2 ${isActive ? "text-action" : "text-fg-secondary"}`}
           >
             <span
               className={`flex items-center justify-center rounded-pill px-4 py-1 ${isActive ? "bg-action text-on-action" : ""}`}

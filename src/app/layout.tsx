@@ -47,7 +47,7 @@ const NAV_ITEMS: BottomNavItem[] = [
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className={`${pretendard.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <QueryProvider>
           <ModalProvider>
             <div className="relative mx-auto flex min-h-dvh w-full max-w-app flex-col bg-canvas">
